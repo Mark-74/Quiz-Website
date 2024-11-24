@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 105vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .answers {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .answer-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .answer-btn:hover {
+            background-color: #0056b3;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Display the image -->
+        <img src="<%= imageUrl %>" alt="Quiz Image">
+
+        <!-- Display the question -->
+        <div class="question">
+            <%= question %>
+        </div>
+
+        <!-- Display the answer buttons -->
+        <div class="answers">
+            <form method="POST">
+                <input type="hidden" name="answer" value="<%= answer1 %>">
+                <button class="answer-btn" type="submit"><%= answer1 %></button>
+            </form>
+            <form method="POST">
+                <input type="hidden" name="answer" value="<%= answer2 %>">
+                <button class="answer-btn" type="submit"><%= answer2 %></button>
+            </form>
+            <form method="POST">
+                <input type="hidden" name="answer" value="<%= answer3 %>">
+                <button class="answer-btn" type="submit"><%= answer3 %></button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

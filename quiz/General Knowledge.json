@@ -1,0 +1,38 @@
+{
+    "name": "General Knowledge Quiz",
+    "levels": [
+        {
+            "level_number": 1,
+            "question": "What is the capital of France?",
+            "image": "",
+            "texts": [
+                "Berlin",
+                "Madrid",
+                "Paris"
+            ],
+            "answer": "Paris"
+        },
+        {
+            "level_number": 2,
+            "question": "Which planet is known as the Red Planet?",
+            "image": "",
+            "texts": [
+                "Earth",
+                "Mars",
+                "Jupiter"
+            ],
+            "answer": "Mars"
+        },
+        {
+            "level_number": 3,
+            "question": "What is the largest ocean on Earth?",
+            "image": "",
+            "texts": [
+                "Atlantic Ocean",
+                "Indian Ocean",
+                "Pacific Ocean"
+            ],
+            "answer": "Pacific Ocean"
+        }
+    ]
+}
