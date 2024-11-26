@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f5e9; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .error-container {
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 20px;
+            background-color: #f8d7da;
+            margin: 20px auto;
+        }
+        h1 {
+            color: #388e3c; 
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #388e3c; 
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #388e3c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Error <%= status || 500 %></h1>
+        <p><%= message || 'Something went wrong!' %></p>
+        <p><a href="/quiz-list">Go back to quiz list</a></p>
+    </div>
+</body>
+</html>

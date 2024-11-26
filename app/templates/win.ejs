@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f5e9; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            color: #388e3c; 
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #388e3c; 
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .answer-btn {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #388e3c;
+            background-color: #66bb6a; 
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .answer-btn:hover {
+            background-color: #43a047; 
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p><%= message %></p>
+    
+    
+    <img src="https://www.robadagrafici.net/wp-content/uploads/2013/11/thumbsandammo-12.jpg" alt="Image related to the content" >
+    <button class="answer-btn" onclick="window.location.replace('/quiz-list')">Torna ai quiz</button>
+
+</body>
+</html>

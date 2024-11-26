@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Quiz Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e8f5e9; /* Light green background */
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 85%;
+            max-width: 700px;
+        }
+        .question {
+            font-size: 28px;
+            color: #388e3c; 
+            margin-bottom: 25px;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .answer-btn {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #388e3c;
+            background-color: #66bb6a; 
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .answer-btn:hover {
+            background-color: #43a047; 
+            transform: translateY(-3px);
+        }
+        .navigation-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #388e3c;
+            background-color: #e0f2f1;
+            border: 2px solid #388e3c;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .navigation-btn:hover {
+            background-color: #c8e6c9;
+        }
+        .image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <img src="<%= imageUrl %>" alt="Question Image" class="image">
+
+        
+        <div class="question">
+            <%= question %>
+        </div>
+
+
+        
+        <div class="answers">
+            <form method="POST">
+                <input type="hidden" name="answer" value="<%= answer1 %>">
+                <button class="answer-btn" type="submit"><%= answer1 %></button>
+            </form>
+            <form method="POST">
+                <input type="hidden" name="answer" value="<%= answer2 %>">
+                <button class="answer-btn" type="submit"><%= answer2 %></button>
+            </form>
+            <form method="POST">
+                <input type="hidden" name="answer" value="<%= answer3 %>">
+                <button class="answer-btn" type="submit"><%= answer3 %></button>
+            </form>
+        </div>
+
+        
+    
+
+   
+    </div>
+</body>
+</html>

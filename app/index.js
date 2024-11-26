@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const utils = require('./utils');
+const { stat } = require('fs');
 
 const app = express();
 const SECRET = 'super_secret_key';
@@ -17,10 +18,6 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //endpoints
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Test Page', message: 'If you are seeing this, ejs works!' });
-});
-
 app.get('/quiz-list', async (req, res) => {
     try{
         const files = await utils.scan_quiz();
@@ -40,7 +37,9 @@ app.get('/quiz/:id', async (req, res) => {
         try {
             data = jwt.verify(token, SECRET);
         } catch (error) {
-            res.status(403).send('Invalid or expired token.');
+            res.clearCookie('auth_token');
+            res.render('error', {status: 403, message: 'Invalid or expired token.'});
+            return;
         }
     } 
     else {
@@ -79,10 +78,14 @@ app.post('/quiz/:id', async (req, res) => {
         try {
             data = jwt.verify(token, SECRET);
         } catch (error) {
-            res.status(403).send('Invalid or expired token.');
+            res.clearCookie('auth_token');
+            res.render('error', {status: 403, message: 'Invalid or expired token.'});
+            return;
         }
     } else {
-        res.status(403).send('No token provided');
+        res.clearCookie('auth_token');
+        res.render('error', {status: 403, message: 'Invalid or expired token.'});
+        return;
     }
 
     //check if answer is correct
@@ -95,7 +98,7 @@ app.post('/quiz/:id', async (req, res) => {
             const quiz = await utils.quiz.from_file(id);
             if(data.level === quiz.levels.length){
                 res.clearCookie('auth_token');
-                res.render('index', { title: 'You won!', message: 'You have completed the quiz!' });
+                res.render('win', { title: 'You won!', message: 'You have completed the quiz!' });
                 return;
             }
 
@@ -109,7 +112,8 @@ app.post('/quiz/:id', async (req, res) => {
 
             res.redirect(`/quiz/${id}`);
         } else {
-            res.status(403).send('Wrong answer');
+            
+            res.render('wrong_answer');
         }
     } catch (err) {
         res.status(404).send('Quiz or question not found');
@@ -120,5 +124,5 @@ app.post('/quiz/:id', async (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}/quiz-list`);
 });

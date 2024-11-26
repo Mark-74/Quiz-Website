@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const { error } = require('console');
 
-const quiz_path = path.join(__dirname, 'quiz')
+const quiz_path = path.join(__dirname, '../quiz')
 
 /** 
 * A function that searches the 'quiz' folder and returns the files found.
